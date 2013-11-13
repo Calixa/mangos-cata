@@ -4581,6 +4581,32 @@ INSERT INTO `pet_name_generation` (`word`,`entry`,`half`) VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `phase_definitions`
+--
+
+DROP TABLE IF EXISTS `phase_definitions`;
+CREATE TABLE `phase_definitions` (
+  `zoneId` mediumint(7) unsigned NOT NULL DEFAULT '0',
+  `entry` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `phasemask` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `phaseId` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `terrainswapmap` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `flags` tinyint(3) unsigned DEFAULT '0',
+  `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `comment` text,
+  PRIMARY KEY (`zoneId`,`entry`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `phase_definitions`
+--
+
+LOCK TABLES `phase_definitions` WRITE;
+/*!40000 ALTER TABLE `phase_definitions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phase_definitions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pickpocketing_loot_template`
 --
 
@@ -20188,27 +20214,6 @@ LOCK TABLES `prospecting_loot_template` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `quest_phase_maps`
---
-
-DROP TABLE IF EXISTS `quest_phase_maps`;
-CREATE TABLE `quest_phase_maps` (
-  `questId` int(11) NOT NULL,
-  `map` smallint(6) NOT NULL,
-  `phase` int(11) NOT NULL,
-  PRIMARY KEY (`questId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `quest_phase_maps`
---
-
-LOCK TABLES `quest_phase_maps` WRITE;
-/*!40000 ALTER TABLE `quest_phase_maps` DISABLE KEYS */;
-/*!40000 ALTER TABLE `quest_phase_maps` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `quest_poi`
 --
 
@@ -20963,6 +20968,27 @@ CREATE TABLE `spell_pet_auras` (
 LOCK TABLES `spell_pet_auras` WRITE;
 /*!40000 ALTER TABLE `spell_pet_auras` DISABLE KEYS */;
 /*!40000 ALTER TABLE `spell_pet_auras` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `spell_phase`
+--
+
+DROP TABLE IF EXISTS `spell_phase`;
+CREATE TABLE `spell_phase` (
+  `id` mediumint(7) unsigned NOT NULL DEFAULT '0',
+  `phasemask` bigint(20) unsigned NOT NULL DEFAULT '1',
+  `terrainswapmap` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `spell_phase`
+--
+
+LOCK TABLES `spell_phase` WRITE;
+/*!40000 ALTER TABLE `spell_phase` DISABLE KEYS */;
+/*!40000 ALTER TABLE `spell_phase` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

@@ -795,6 +795,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\game\PhaseMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\game\PhaseMgr.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\game\PoolManager.cpp"
 				>
 			</File>

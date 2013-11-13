@@ -7285,3 +7285,12 @@ bool ChatHandler::HandleMmapTestArea(char* args)
 
     return true;
 }
+
+bool ChatHandler::HandleReloadPhaseDefinitionsCommand(char* /*args*/)
+{
+    SendSysMessage("Reloading phase_definitions table...");
+    sObjectMgr.LoadPhaseDefinitions();
+    sWorld.UpdatePhaseDefinitions();
+    SendSysMessage("Phase Definitions reloaded.");
+    return true;
+}
