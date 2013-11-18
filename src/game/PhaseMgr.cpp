@@ -1,6 +1,6 @@
 /*
  * This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+ * Copyright (C) 2008-2013 TrinityCore <http://www.trinitycore.org/>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@
 #include "Player.h"
 #include "SpellAuras.h"
 
-//////////////////////////////////////////////////////////////////
-// Updating
 
 PhaseMgr::PhaseMgr(Player* _player) : player(_player), _UpdateFlags(0)
 {
@@ -68,9 +66,6 @@ void PhaseMgr::RemoveUpdateFlag(PhaseUpdateFlag updateFlag)
     Update();
 }
 
-/////////////////////////////////////////////////////////////////
-// Notifier
-
 void PhaseMgr::NotifyConditionChanged(PhaseUpdateData const& updateData)
 {
     if (NeedsPhaseUpdateWithData(updateData))
@@ -79,9 +74,6 @@ void PhaseMgr::NotifyConditionChanged(PhaseUpdateData const& updateData)
         Update();
     }
 }
-
-//////////////////////////////////////////////////////////////////
-// Phasing Definitions
 
 void PhaseMgr::Recalculate()
 {
@@ -132,9 +124,6 @@ bool PhaseMgr::NeedsPhaseUpdateWithData(PhaseUpdateData const updateData)
     return false;
 }
 
-//////////////////////////////////////////////////////////////////
-// Auras
-
 void PhaseMgr::RegisterPhasingAuraEffect(Aura const* auraEffect)
 {
     PhaseInfo* phaseInfo = new PhaseInfo();
@@ -178,9 +167,6 @@ void PhaseMgr::UnRegisterPhasingAuraEffect(Aura const* auraEffect)
     Update();
 }
 
-//////////////////////////////////////////////////////////////////
-// Commands
-
 void PhaseMgr::SendDebugReportToPlayer(Player* const debugger)
 {
     ChatHandler(debugger).PSendSysMessage(LANG_PHASING_REPORT_STATUS, player->GetName(), player->GetZoneId(), player->getLevel(), player->GetTeam(), _UpdateFlags);
@@ -222,9 +208,6 @@ void PhaseMgr::SetCustomPhase(uint32 const phaseMask)
 
     Update();
 }
-
-//////////////////////////////////////////////////////////////////
-// Phase Data
 
 uint32 PhaseData::GetCurrentPhasemask() const
 {
@@ -337,9 +320,6 @@ uint32 PhaseData::RemoveAuraInfo(uint32 const spellId)
     else
         return 0;
 }
-
-//////////////////////////////////////////////////////////////////
-// Phase Update Data
 
 void PhaseUpdateData::AddQuestUpdate(uint32 const questId)
 {
